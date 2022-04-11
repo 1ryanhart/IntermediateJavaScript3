@@ -132,8 +132,6 @@ async function runCountdown() {
 }
 
 function handleSelectPodRacer(target) {
-	console.log("selected a pod", target.id)
-
 	// remove class selected from all racer options
 	const selected = document.querySelector('#racers .selected')
 	if(selected) {
@@ -148,8 +146,6 @@ function handleSelectPodRacer(target) {
 }
 
 function handleSelectTrack(target) {
-	console.log("Selected a track", target.id)
-
 	// remove class selected from all track options
 	const selected = document.querySelector('#tracks .selected')
 	if(selected) {
@@ -260,24 +256,28 @@ function resultsView(positions) {
 			<h1>Race Results</h1>
 		</header>
 		<main>
-			${raceProgress(positions)}
+			${raceProgress(positions, 'finished').join('')}
 			<a href="/race">Start a new race</a>
 		</main>
 	`
 }
 
-function raceProgress(positions) {
+function raceProgress(positions, status='in-progress') {
 	let userPlayer = positions.find(e => e.id === store.player_id)
 	userPlayer.driver_name += " (you)"
 
 	positions = positions.sort((a, b) => (a.segment > b.segment) ? -1 : 1)
 	let count = 1
+	let toShow = (status == "finished")? "hidden" : "";
 
-	const results = positions.map(p => {
+ 	const results = positions.map(p => {
 		return `
 			<tr>
 				<td>
 					<h3>${count++} - ${p.driver_name}</h3>
+					<div class="progress-bar-light-grey">
+  						<div class="progress-green text-center ${toShow}" style="width:${Math.floor(100*p.segment/201)}%">${Math.floor(100*p.segment/201)}%</div>
+					</div>
 				</td>
 			</tr>
 		`
@@ -287,7 +287,7 @@ function raceProgress(positions) {
 		<main>
 			<h3>Leaderboard</h3>
 			<section id="leaderBoard">
-				${results}
+				${results.join('')}
 			</section>
 		</main>
 	`

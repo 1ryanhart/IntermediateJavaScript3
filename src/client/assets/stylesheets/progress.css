@@ -29,6 +29,20 @@ section#accelerate button {
     font-size: 70px;
 }
 
+.progress-bar-light-grey {
+    color:#000;
+    background-color:#f1f1f1
+}
+
+.progress-green {
+    color:#fff
+    ;background-color:#4CAF50
+}
+
+.text-center {
+    text-align:center
+}
+
 /* -------------------  TABLET  --------------------- */
 @media (min-width: 768px) {
 
