@@ -256,7 +256,7 @@ function resultsView(positions) {
 			<h1>Race Results</h1>
 		</header>
 		<main>
-			${raceProgress(positions, 'finished').join('')}
+			${raceProgress(positions, 'finished')}
 			<a href="/race">Start a new race</a>
 		</main>
 	`
@@ -281,13 +281,13 @@ function raceProgress(positions, status='in-progress') {
 				</td>
 			</tr>
 		`
-	})
+	}).join('')
 
 	return `
 		<main>
 			<h3>Leaderboard</h3>
 			<section id="leaderBoard">
-				${results.join('')}
+				${results}
 			</section>
 		</main>
 	`
