@@ -21,7 +21,7 @@ body {
 }
 
 header {
-  background-image: url('https://via.placeholder.com/1150');
+  background-image: url('https://cdn.vox-cdn.com/thumbor/XEweMW-MCOFLovmfiEwdyjle-ts=/0x0:2048x2048/1200x800/filters:focal(861x861:1187x1187)/cdn.vox-cdn.com/uploads/chorus_image/image/65327601/mobile_MarioKartTour_screen_07_png_jpgcopy.0.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -78,6 +78,10 @@ p {
   display: block;
   text-align: center;
   text-decoration: none;
+}
+
+.hidden {
+  display: none
 }
 
 main {
